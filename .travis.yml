@@ -3,18 +3,18 @@ services :
   - docker
 
 before_install :
-  - docker build -t entityvsentityv3/react-test -f ./client/Dockerfile.dev ./client
+  - docker build -t entityvsentityv2/react-test -f ./client/Dockerfile.dev ./client
 
 script :
-  - docker run entityvsentityv3/react-test npm test -- --coverage --watchAll=false
+  - docker run entityvsentityv2/react-test npm test -- --coverage --watchAll=false
 
 after_success :
-  - docker build -t entityvsentityv3/multi-client ./client
-  - docker build -t entityvsentityv3/multi-nginx ./nginx
-  - docker build -t entityvsentityv3/multi-server ./server
-  - docker build -t entityvsentityv3/multi-worker ./worker
+  - docker build -t entityvsentityv2/multi-client ./client
+  - docker build -t entityvsentityv2/multi-nginx ./nginx
+  - docker build -t entityvsentityv2/multi-server ./server
+  - docker build -t entityvsentityv2/multi-worker ./worker
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
-  - docker push entityvsentityv3/multi-client
-  - docker push entityvsentityv3/multi-nginx
-  - docker push entityvsentityv3/multi-server
-  - docker push entityvsentityv3/multi-worker
+  - docker push entityvsentityv2/multi-client
+  - docker push entityvsentityv2/multi-nginx
+  - docker push entityvsentityv2/multi-server
+  - docker push entityvsentityv2/multi-worker
