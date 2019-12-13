@@ -19,7 +19,7 @@ after_success :
   - docker push entityvsentityv2/multi-server
   - docker push entityvsentityv2/multi-worker
 
- deploy :
+deploy :
   provider : elasticbeanstalk
   region : "us-east-1" 
   app : "multi-docker"
